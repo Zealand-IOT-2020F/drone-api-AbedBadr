@@ -36,7 +36,7 @@ class Drone(object):
 
     def takeOff(self):
         print("takeoff")
-        result = self.sendMessage(" takeoff")
+        result = self.sendMessage("takeoff")
 
     def land(self):
         print("land")
