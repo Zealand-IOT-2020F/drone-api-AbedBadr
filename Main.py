@@ -11,9 +11,11 @@ drone1.printinfo()
 drone1.takeOff()
 #time.sleep(2)
 
+drone1.up(50)
+
 while (drone1.battery() > 10):
-    drone1.up(20)
-    drone1.forward(20)
+    drone1.forward(50)
+    drone1.cw(90)
 
 drone1.land()
 drone1.end()

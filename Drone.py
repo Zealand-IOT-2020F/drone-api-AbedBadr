@@ -60,11 +60,11 @@ class Drone(object):
 
     def up(self, x):
         print("up")
-        result = self.sendMessage("up " + x)
+        result = self.sendMessage("up " + str(x)) #to string
 
     def forward(self, x):
         print("forward")
         if (x > 20 and x < 500):
-            result = self.sendMessage("forward " + x)
+            result = self.sendMessage("forward " + str(x))
         else:
             print("cm has to be between 20-500")
