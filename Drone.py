@@ -11,11 +11,12 @@ class Drone(object):
         print("ip: " + ip)
         self.TelloPort = port
         # UDP Socket
-        self.Host = ''
+        self.Host = ""
         self.HostPort = 9000
         self.locaddr = (self.Host, self.HostPort)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.tello_address = ('192.168.10.1', 8889)
+        #self.tello_address = ('192.168.10.1', 8889)
+        self.tello_address = (ip, port)
         self.sock.bind(self.locaddr)
 
     def sendMessage(self,TelloMessage):
@@ -24,7 +25,7 @@ class Drone(object):
        sent = self.sock.sendto(msg,self.tello_address)
        data, server = self.sock.recvfrom(1518)
        print(data.decode(encoding="utf-8")) 
-       return "from sendmessage " + TelloMessage + " end "
+       return "from sendmessage " + TelloMessage 
 
     def printinfo(self):
         print("Hallo Drone at : " + self.TelloIp)
@@ -40,7 +41,7 @@ class Drone(object):
 
     def land(self):
         print("land")
-        result = self.sendMessage(" land")
+        result = self.sendMessage("land")
 
     def end(self):
         print("end")
@@ -48,14 +49,14 @@ class Drone(object):
 
     def cw(self,x):
         print("cw")
-        result = self.sendMessage(" cw "+x)
+        result = self.sendMessage("cw "+ str(x))
 
-    def ccw(self,X):
+    def ccw(self,x):
         print("ccw")
-        result = self.sendMessage(" ccw "+ X)
+        result = self.sendMessage("ccw "+ str(x))
 
     def battery(self):
-        result = self.sendMessage(" battery?")
+        result = self.sendMessage("battery?")
         return result
 
     def up(self, x):
